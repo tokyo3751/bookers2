@@ -1,14 +1,15 @@
 <p id="notice"></p>
  <div class="container">
    <div class="row">
-     <%= render 'users/user', user: @user %>
-   </div>
+     <%= render 'users/user', {user: @user, book: @newbook} %>
    <div class="col-md-8 offset-md-1">
      <h2>Book detail</h2>
      <table class="table">
        <tr>
-         <td><%= image_tag @user.get_profile_image(100,100) %></td>
-         <td><%= link_to @user.name, user_path(@user) %></td>
+         <td>
+           <%= image_tag @user.get_profile_image(100,100) %>
+           <p><%= link_to @user.name, user_path(@user) %></p>
+         </td>
          <td><%= @book.title %></td>
          <td><%= @book.body %></td>
          <% if @book.user_id == current_user.id %>
@@ -17,5 +18,6 @@
          <% end %>
        </tr>
      </table>
+     </div>
    </div>
  </div>
